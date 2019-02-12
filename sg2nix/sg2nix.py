@@ -119,7 +119,7 @@ def convert2nix(securityGroups, region, output, access_key_id):
         {{ protocol = {}; sourceIp = "{}"; }};""".format(des, sg_rules_protocol, rule['CidrIp'])
                     else:
                         sg_rule = """\n        # {}
-        {{ fromPort = {}; toPort = {}; protocol = {}; sourceIp = "{}"; }};""".format(des, sg_rules_fromport, sg_rules_toport, sg_rules_protocol, rule['CidrIp'])
+        {{ fromPort = {}; toPort = {}; protocol = "{}"; sourceIp = "{}"; }};""".format(des, sg_rules_fromport, sg_rules_toport, sg_rules_protocol, rule['CidrIp'])
                     sg_rules.append(sg_rule)
             
             # need to test the actuall expression on nix cause i m not sure how it works in nix
@@ -134,7 +134,7 @@ def convert2nix(securityGroups, region, output, access_key_id):
         {{ protocol = {}; sourceGroup.ownerId = "{}"; sourceGroup.groupName = "{}"; }};""".format(des, sg_rules_protocol, rule['UserId'], rule['UserIdGroupId'])
                     else:
                         sg_rule = """\n        # {}
-        {{ fromPort = {}; toPort = {}; protocol = {}; sourceGroup.ownerId = "{}"; sourceGroup.groupName = "{}"; }};""".format(des, sg_rules_fromport, sg_rules_toport, sg_rules_protocol, rule['UserId'], rule['GroupId'])
+        {{ fromPort = {}; toPort = {}; protocol = "{}"; sourceGroup.ownerId = "{}"; sourceGroup.groupName = "{}"; }};""".format(des, sg_rules_fromport, sg_rules_toport, sg_rules_protocol, rule['UserId'], rule['GroupId'])
                     sg_rules.append(sg_rule)
             # sg_rules_typenumber = permissions['FromPort'] ??
             # sg_rules_codeNumber = "" ????? 
