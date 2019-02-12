@@ -22,6 +22,7 @@ setup(name='sg2nix',
       author_email='iuns@outlook.fr',
       license='MIT',
       platforms=["Linux"],
+      packages=["sg2nix"],
       install_requires=install_requirements,
       classifiers=[
         'Development Status :: 1 - Development',

@@ -2,7 +2,7 @@ import argparse
 import sys
 import os
 import boto3
-from jinja2 import Environment, FileSystemLoader
+from jinja2 import Environment, PackageLoader
 from configparser import ConfigParser
 
 # Stolened from nixops :p
@@ -80,7 +80,7 @@ def convert2nix(securityGroups, region, output, access_key_id):
         sys.exit(1)
     
     # jinja stuff
-    file_loader = FileSystemLoader('templates')
+    file_loader = PackageLoader('sg2nix', 'templates')
     env = Environment(loader=file_loader)
     sg_expressions = env.get_template('sg.nix.j2')
     resource = env.get_template('resource.nix.j2')
