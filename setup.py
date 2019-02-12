@@ -23,6 +23,7 @@ setup(name='sg2nix',
       license='MIT',
       platforms=["Linux"],
       packages=["sg2nix"],
+      include_package_data=True,
       install_requires=install_requirements,
       classifiers=[
         'Development Status :: 1 - Development',
