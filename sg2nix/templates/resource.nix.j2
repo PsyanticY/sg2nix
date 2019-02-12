@@ -1,0 +1,11 @@
+{{ resource_name }} = {
+      inherit region accessKeyId;
+      vpcId = "{{ vpcId }}";
+      description = "{{description}}";
+      name = "{{ name }}";
+      tags = {{ tags }};
+      rules = [
+      {% for rule in rules %}{{ rule }}{% endfor %}
+      
+      ]
+    };

@@ -1,0 +1,12 @@
+{ region ? "{{ region }}"
+, accessKeyId ? "{{ access_key_id }}"
+, ...
+}:
+{
+resources.ec2SecurityGroups =
+  {
+    {% for resource in resources %}
+    {{ resource }}
+    {% endfor %}
+  };
+}
