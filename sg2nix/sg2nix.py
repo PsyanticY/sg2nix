@@ -39,8 +39,7 @@ def fetch_aws_secret_key(access_key_id):
                 config.get(access_key_id, 'aws_secret_access_key'))
 
     def ec2_keys_from_env():
-        return (access_key_id,
-                os.environ.get('EC2_SECRET_KEY') or os.environ.get('AWS_SECRET_ACCESS_KEY'))
+        return (os.environ.get('EC2_SECRET_KEY'), os.environ.get('AWS_SECRET_ACCESS_KEY'))
 
     sources = (get_credentials() for get_credentials in
                 [parse_ec2_keys, parse_aws_credentials, ec2_keys_from_env])
